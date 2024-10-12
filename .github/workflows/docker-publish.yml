@@ -1,12 +1,10 @@
 name: Build and Push Docker Image
 
-# Trigger the workflow on release events
+# Trigger on release events and manually via workflow_dispatch
 on:
-#  release:
-#    types: [created]
-    push:
-      branches:
-        - feature/dockerhub-workflow-#1
+  release:
+    types: [created]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,7 +14,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Log in to Docker Hub
+      - name: Log in to Docker Hub (Dry Run)
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -30,12 +28,16 @@ jobs:
           VERSION_TAG="${VERSION}-${DATE_TAG}"
           echo "tag=$VERSION_TAG" >> $GITHUB_ENV
 
-      - name: Build Docker image
+      - name: Build Docker image (Dry Run)
         run: |
-          docker build -t maboni82/external-ip-checker:latest \
-                       -t maboni82/external-ip-checker:${{ env.tag }} .
+          echo "Dry run build command: docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:${{ env.tag }} ."
+          # Actual build command, commented out
+          # docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:${{ env.tag }} .
 
-      - name: Push Docker images to Docker Hub
+      - name: Push Docker images to Docker Hub (Dry Run)
         run: |
-          docker push maboni82/external-ip-checker:latest
-          docker push maboni82/external-ip-checker:${{ env.tag }}
+          echo "Dry run push command: docker push maboni82/external-ip-checker:latest"
+          echo "Dry run push command: docker push maboni82/external-ip-checker:${{ env.tag }}"
+          # Actual push commands, commented out
+          # docker push maboni82/external-ip-checker:latest
+          # docker push maboni82/external-ip-checker:${{ env.tag }}
