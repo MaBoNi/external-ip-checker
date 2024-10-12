@@ -1,6 +1,7 @@
 ![Build Status](https://img.shields.io/github/actions/workflow/status/maboni/external-ip-checker/docker-publish.yml?branch=main&style=for-the-badge)
 ![License](https://img.shields.io/github/license/maboni/external-ip-checker?style=for-the-badge)
 ![Repo Size](https://img.shields.io/github/repo-size/maboni/external-ip-checker?style=for-the-badge)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-external--ip--checker-blue?logo=docker&style=for-the-badge)](https://hub.docker.com/r/maboni82/external-ip-checker)
 [![Docker Pulls](https://img.shields.io/docker/pulls/maboni82/external-ip-checker?style=for-the-badge)](https://hub.docker.com/r/maboni82/external-ip-checker)
 
 A lightweight PHP-based Docker container that allows any server to check and log its own external IP address. Ideal for monitoring, IP verification, and network diagnostics. This application returns the caller’s IP address and logs essential request data, including user agent, language, and timestamp.
@@ -57,7 +58,7 @@ Access a live demo of this service at [https://ip.bondit.dk](https://ip.bondit.d
 
 ## Docker Hub Repository
 You can pull the Docker image directly from Docker Hub:
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-external--ip--checker-blue?logo=docker&style=for-the-badge)](https://hub.docker.com/r/maboni82/external-ip-checker)
+(https://hub.docker.com/r/maboni82/external-ip-checker)
 
 
 
