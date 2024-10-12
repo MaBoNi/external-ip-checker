@@ -4,9 +4,6 @@ name: Build and Push Docker Image
 on:
   release:
     types: [created]
-  push:
-    branches:
-      - feature/dockerhub-workflow-#1
   workflow_dispatch:
 
 jobs:
@@ -22,7 +19,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-        # Commenting out this step since login doesn’t have a dry-run option, but login is required for further steps.
 
       - name: Set version-date tag
         id: tag
@@ -34,14 +30,9 @@ jobs:
       
       - name: Build Docker image (Dry Run)
         run: |
-          echo "Dry run build command: docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:${{ steps.tag.outputs.tag }} ."
-          # Actual build command, commented out
-          # docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:${{ steps.tag.outputs.tag }} .
+          docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:${{ steps.tag.outputs.tag }} .
 
       - name: Push Docker images to Docker Hub (Dry Run)
         run: |
-          echo "Dry run push command: docker push maboni82/external-ip-checker:latest"
-          echo "Dry run push command: docker push maboni82/external-ip-checker:${{ steps.tag.outputs.tag }}"
-          # Actual push commands, commented out
-          # docker push maboni82/external-ip-checker:latest
-          # docker push maboni82/external-ip-checker:${{ steps.tag.outputs.tag }}
+          docker push maboni82/external-ip-checker:latest
+          docker push maboni82/external-ip-checker:${{ steps.tag.outputs.tag }}
