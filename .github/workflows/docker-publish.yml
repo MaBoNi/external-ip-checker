@@ -31,7 +31,7 @@ jobs:
 
       - name: Build Docker image (Dry Run)
         run: |
-          echo "Dry run build command: docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:${{ env.tag }} ."
+          echo "Dry run build command: docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:latest ."
           # Actual build command, commented out
           # docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:${{ env.tag }} .
 
