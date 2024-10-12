@@ -23,7 +23,8 @@ jobs:
       - name: Set version-date tag
         id: tag
         run: |
-          VERSION=${{ github.event.release.tag_name }}
+          #VERSION=${{ github.event.release.tag_name }}
+          VERSION="v0.9.0"
           DATE_TAG=$(date +'%Y%m%d')
           VERSION_TAG="${VERSION}-${DATE_TAG}"
           echo "tag=$VERSION_TAG" >> $GITHUB_ENV
