@@ -1,10 +1,9 @@
 name: Build and Push Docker Image
 
-# Trigger on release events and manually via workflow_dispatch
 on:
-  release:
-    types: [created]
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -28,7 +27,7 @@ jobs:
           VERSION_TAG="${VERSION}-${DATE_TAG}"
           echo "::set-output name=tag::${VERSION_TAG}"
       
-      - name: Build Docker image (Dry Run)
+      - name: Build Docker image
         run: |
           docker build -t maboni82/external-ip-checker:latest -t maboni82/external-ip-checker:${{ steps.tag.outputs.tag }} .
 
