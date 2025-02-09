@@ -60,8 +60,6 @@ Access a live demo of this service at [https://ip.bondit.dk](https://ip.bondit.d
 You can pull the Docker image directly from Docker Hub:
 (https://hub.docker.com/r/maboni82/external-ip-checker)
 
-
-
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
