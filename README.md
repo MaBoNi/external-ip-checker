@@ -18,18 +18,48 @@ A lightweight PHP-based Docker container that allows any server to check and log
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Installation
+
+#### Option 1: Using Docker Compose (Recommended)
+The easiest way to run this application is using the pre-built image from Docker Hub:
+
+1. **Create a `docker-compose.yml` file**:
+    ```yaml
+    services:
+      php-app:
+        image: maboni82/external-ip-checker:latest
+        container_name: external-ip-checker
+        ports:
+          - "8080:80"
+        restart: unless-stopped
+    ```
+
+2. **Run the container**:
+    ```bash
+    docker-compose up -d
+    ```
+
+3. Your application is now accessible at `http://localhost:8080`.
+
+#### Option 2: Using Docker CLI
+You can also run the container directly:
+```bash
+docker run -d -p 8080:80 --name external-ip-checker maboni82/external-ip-checker:latest
+```
+
+#### Option 3: Build from Source
+If you want to build the image yourself:
+
 1. **Clone the repository**:
     ```bash
     git clone https://github.com/maboni/external-ip-checker.git
     cd external-ip-checker
     ```
 
-2. **Build and run the Docker container**:
+2. **Build and run**:
     ```bash
-    docker-compose up -d
+    docker build -t external-ip-checker .
+    docker run -d -p 8080:80 --name external-ip-checker external-ip-checker
     ```
-
-3. Your PHP application is now accessible at `http://localhost:8080`. Any server accessing this URL will receive its own external IP in response.
 
 ### Exposing with Nginx Proxy Manager
 If you are using [![Nginx Proxy Manager](https://img.shields.io/badge/Nginx_Proxy_Manager-GitHub-blue?logo=github)](https://github.com/NginxProxyManager/nginx-proxy-manager), you can easily configure it to point to this app, using `http://<your-server-ip>:8080`.
@@ -47,8 +77,8 @@ Access a live demo of this service at [https://ip.bondit.dk](https://ip.bondit.d
 
 ## Files Explained
 
-- **docker-compose.yml** – Defines the container service for easy deployment.
-- **Dockerfile** – Specifies the base image and setup for the PHP application.
+- **docker-compose.yml** – Defines the container service using the Docker Hub image for easy deployment.
+- **Dockerfile** – Specifies the base image and setup for building the PHP application from source.
 - **src/index.php** – Contains the PHP script that returns the client IP and logs the request details.
 
 ## Technologies Used
