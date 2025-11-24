@@ -23,11 +23,11 @@ function getClientIP() {
 $user_ip = getClientIP();
 
 // Optional: Additional data you might want to log
-$user_agent = $_SERVER['HTTP_USER_AGENT'];
+$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'UNKNOWN';
 $timestamp = date('Y-m-d H:i:s');
-$accept_language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-$query_string = $_SERVER['QUERY_STRING'];
-$request_method = $_SERVER['REQUEST_METHOD'];
+$accept_language = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'UNKNOWN';
+$query_string = $_SERVER['QUERY_STRING'] ?? '';
+$request_method = $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN';
 
 // Prepare log message
 $log_message = "Time: $timestamp, IP: $user_ip, Method: $request_method, Query: $query_string, Agent: $user_agent, Lang: $accept_language\n";
