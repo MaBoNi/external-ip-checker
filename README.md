@@ -75,6 +75,25 @@ When you navigate to `http://localhost:8080`, the app will return your IP addres
 ## Demo
 Access a live demo of this service at [https://ip.bondit.dk](https://ip.bondit.dk)
 
+## How It Works
+
+```mermaid
+sequenceDiagram
+    participant User as External User
+    participant Apache as Apache Server
+    participant PHP as index.php
+    participant Log as visitors.log
+
+    User->>Apache: HTTP Request
+    Apache->>PHP: Forward request
+    PHP->>PHP: Extract IP from headers<br/>(X-Forwarded-For, etc.)
+    PHP->>PHP: Collect metadata<br/>(User-Agent, Timestamp, etc.)
+    PHP->>Log: Write log entry
+    Log-->>PHP: ✓ Logged
+    PHP->>Apache: Return IP address
+    Apache->>User: Response: Your IP
+```
+
 ## Files Explained
 
 - **docker-compose.yml** – Defines the container service using the Docker Hub image for easy deployment.
