@@ -32,7 +32,7 @@ jobs:
       - name: Set version-date tag
         id: tag
         run: |
-          VERSION="v1.0.0"  # Default version if no release tag is found
+          VERSION="v1.0.2"  # Default version if no release tag is found
           if [ ! -z "${{ github.event.release.tag_name }}" ]; then
             VERSION=${{ github.event.release.tag_name }}
           fi
