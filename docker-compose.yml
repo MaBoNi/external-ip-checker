@@ -1,8 +1,7 @@
 services:
   php-app:
-    build: .
+    image: maboni82/external-ip-checker:latest
     container_name: external-ip-checker
     ports:
       - "8080:80"
-    volumes:
-      - ./src:/var/www/html
+    restart: unless-stopped
