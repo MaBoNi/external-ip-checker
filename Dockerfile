@@ -1,5 +1,5 @@
 # Use a lightweight PHP image with Apache
-FROM php:8.4-apache
+FROM php:8.5-apache
 
 # Copy source code into the container
 COPY ./src /var/www/html
