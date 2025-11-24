@@ -73,7 +73,7 @@ When you navigate to `http://localhost:8080`, the app will return your IP addres
 ```
 
 ## Demo
-Access a live demo of this service at [https://ip.bondit.dk](https://ip.bondit.dk)
+Access a live demo of this service at [https://checkip.bonde.ninja](https://checkip.bonde.ninja)
 
 ## How It Works
 
